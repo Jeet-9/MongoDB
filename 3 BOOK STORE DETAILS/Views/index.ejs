@@ -1,40 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>Book Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form input, form button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+        }
+
+        table td a {
+            text-decoration: none;
+            color: white;
+        }
+
+        table td button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        table td button:hover {
+            background-color: #218838;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
 <body>
-    <form action="/addData" method="post">
-        <input type="text" placeholder="Enter your Book_name" name="Book_name">
-        <input type="text" placeholder="Enter your Auther_name" name="Auther_name">
-        <input type="number" placeholder="Enter your Price" name="Price">
-        <input type="date" placeholder="Enter your Publish_data" name="Publish_data">
-        <button type="submit">Submit</button>
-    </form>
-    
+    <div class="form-container">
+        <form action="/addData" method="post">
+            <input type="text" placeholder="Enter your Book Name" name="Book_name" required>
+            <input type="text" placeholder="Enter your Author Name" name="Auther_name" required>
+            <input type="number" placeholder="Enter your Price" name="Price" required>
+            <input type="date" name="Publish_data" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
-    <table border="1" width="100%">
+    <table>
         <tr>
-            <th>Book_name</th>
-            <th>Auther_name</th>
+            <th>Book Name</th>
+            <th>Author Name</th>
             <th>Price</th>
-            <th>Publish_data</th>
+            <th>Publish Date</th>
             <th colspan="2">Action</th>
         </tr>
-            <% data.map((e ,i)=>{%>
-                <tr>
-                    <td><%= e.Book_name%></td>
-                    <td><%= e.Auther_name%></td>
-                    <td><%= e.Price%></td>
-                    <td><%= e.Publish_data%></td>
-                    <td>
-                        <button><a href="/editData?id=<%=e.id%>">Edit</a></button>
-                    </td>
-                    <td>
-                        <button><a href="/deleteData?id=<%=e.id%>">Delete</a></button>
-                    </td>
-                </tr>
-            <% }) %>
+        <% data.map((e, i) => { %>
+        <tr>
+            <td><%= e.Book_name %></td>
+            <td><%= e.Auther_name %></td>
+            <td><%= e.Price %></td>
+            <td><%= e.Publish_data %></td>
+            <td>
+                <button><a href="/editData?id=<%=e.id%>">Edit</a></button>
+            </td>
+            <td>
+                <button class="delete-btn"><a href="/deleteData?id=<%=e.id%>">Delete</a></button>
+            </td>
+        </tr>
+        <% }) %>
     </table>
 </body>
 </html>
