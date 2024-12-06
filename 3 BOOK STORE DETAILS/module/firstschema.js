@@ -17,6 +17,10 @@ const schema = mongoose.Schema({
         type: String, 
         required: true 
     },
+    image: { 
+        type: String, 
+        required: true 
+    },
 });
 
 const admin = mongoose.model("Student",schema);
