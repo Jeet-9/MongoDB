@@ -1,6 +1,7 @@
 const express = require("express");
 const port = 1000;
 const path = require("path");
+const fs = require("fs");
 
 const app = express();
 const db = require("./config/db")
@@ -35,6 +36,8 @@ app.post("/addData", upload, async (req, res) => {
 });
 
 app.get("/deleteData", async (req, res) => {
+    let singleRecord = await adminSchema.findById(req.query.id);
+    fs.unlinkSync(singleRecord.image);
     let data = await adminSchema.findByIdAndDelete(req.query.id);
     data && res.redirect("/");
 });
@@ -44,7 +47,12 @@ app.get("/editData", async (req, res) => {
     singleData && res.render("edit", { singleData });
 });
 
-app.post("/updateData", async (req, res) => {
+app.post("/updateData", upload,async (req, res) => {
+    let singleData = await adminSchema.findById(req.body.id);
+    let img = "";
+    req.file ? (img = req.file.path) : (img = singleData.image);
+    req.file && fs.unlinkSync(singleData.image);
+    req.body.image = img;
     let update = await adminSchema.findByIdAndUpdate(req.body.id, req.body);
     update && res.redirect("/");
 })
