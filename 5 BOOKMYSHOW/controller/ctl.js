@@ -5,12 +5,10 @@ module.exports.HomePage = async(req,res) =>{
     let data = await AdminSchema.find({});
     res.render("index",{data});
 }
-
 module.exports.AddPage = async(req,res)=>{
     let data = AdminSchema.find({});
     res.render("add");
 }
-
 module.exports.AddData = async(req,res)=>{
     req.body.image = req.file.path
     let data = await AdminSchema.create(req.body);
