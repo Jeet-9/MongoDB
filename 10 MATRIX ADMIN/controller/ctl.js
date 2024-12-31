@@ -30,16 +30,13 @@ module.exports.Logout = (req,res)=>{
 
 module.exports.HomePage = async(req,res) =>{
     res.render("Dashboard");
-
 }
-
 module.exports.Addadmin =async(req,res) => {
     res.render("addadmin");
 }
-
 module.exports.Viewadmin =async(req,res) => {
-    // let data = await AdminSchema.find({})
-    data && res.render("viewadmin");
+    let data = await AdminSchema.find();
+    data && res.render("viewadmin",{data});
 }
 module.exports.AddAdminData = async(req,res)=>{
     req.body.image = req.file.path;
