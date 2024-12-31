@@ -2,7 +2,6 @@ const AdminSchema = require("../module/firstschema");
 const LogSchema = require("../module/loguser");
 const fs = require("fs");
 
-
 module.exports.HomePage = async(req,res) =>{
     res.render("Dashboard");
 }
@@ -13,31 +12,16 @@ module.exports.Header = async(req,res) =>{
     res.render("header");
 }
 module.exports.Addadmin =async(req,res) => {
-    // res.render("addadmin");
-    // // if (req.cookies.adminData) {
-    // //     let data = await AdminSchema.find({})
-    // // data && res.render("addadmin")
-    // // }else{
-    // //     res.redirect("/");
-    // }
             let data = await AdminSchema.find({})
     data && res.render("addadmin")
 }
 module.exports.AddAdminData = async(req,res)=>{
-    // req.body.image = req.file.path;
     let data = await AdminSchema.create(req.body)
     data && res.redirect("addadmin")
 }
 module.exports.Viewadmin =async(req,res) => {
     let data = await AdminSchema.find({})
     data && res.render("viewadmin",{data});
-
-    // if (req.cookies.adminData) {
-    //     let data = await AdminSchema.find({})
-    //     data && res.render("viewadmin",{data})
-    //    }else{
-    //     res.redirect("/");
-    //    }
 }
 module.exports.DeleteData = async(req,res)=>{
     let data = await AdminSchema.findByIdAndDelete(req.query.id)
@@ -45,7 +29,7 @@ module.exports.DeleteData = async(req,res)=>{
 }
 module.exports.EditData = async(req,res)=>{
     let data = await AdminSchema.findById(req.query.id)
-    data && res.render("enditform",{data})
+    data && res.render("editform",{data})
 }
 module.exports.UpdateData = async(req,res)=>{
     let data = await AdminSchema.findByIdAndUpdate(req.body.id,req.body)

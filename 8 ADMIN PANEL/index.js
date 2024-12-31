@@ -1,5 +1,5 @@
 const express = require("express")
-const port = 1009;
+const port = 1007;
 const path = require("path");
 const db = require("./config/db")
 

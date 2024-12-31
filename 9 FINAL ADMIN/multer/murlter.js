@@ -12,5 +12,3 @@ let DataStorage = multer.diskStorage({
 let upload = multer({storage:DataStorage}).single("image");
 
 module.exports = upload
-
-
