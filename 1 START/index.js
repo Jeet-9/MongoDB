@@ -18,4 +18,4 @@ app.get("/", (req, res) => {
 app.listen(port, (err) => {
     err ? console.log(err) : console.log("Server started on port " + port);
     
-})
+});
