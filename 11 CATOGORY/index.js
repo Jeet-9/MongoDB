@@ -8,7 +8,7 @@ const app = express();
 const db = require("./config/db");
 const passport = require("./middleware/passport");
 const session = require("express-session");
-const connectFlash = require("./middleware/fiashconnect")
+const connectFlash = require("./middleware/fiashconnect");
 
 app.use(express.urlencoded());
 app.use(flash());

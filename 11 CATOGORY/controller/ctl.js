@@ -7,14 +7,9 @@ module.exports.Login = (req,res) => {
 }
 
 module.exports.userLogin = async (req, res) =>{
-    // console.log(req.body);
-    
     let admin = await AdminSchema.findOne({email: req.body.email});
-    // console.log(admin);
     req.flash( "success" , "You are successfully logged in")
     res.redirect("/Dashboard");
-    
-   
 };
 
 module.exports.Logout = (req,res)=>{
@@ -22,24 +17,20 @@ module.exports.Logout = (req,res)=>{
     res.clearCookie("local");
     res.redirect("/");
 }
-
 module.exports.HomePage = async(req,res) =>{
     res.render("Dashboard");
 }
 module.exports.chekpassword = async(req,res) =>{
     res.render("chekpassword");
 }
-
 module.exports.Addadmin =async(req,res) => {
     res.render("addadmin");
     
 }
-
 module.exports.Viewadmin =async(req,res) => {
     let data = await AdminSchema.find({})
     data && res.render("viewadmin",{data});
 }
-
 module.exports.AddAdminData = async(req,res)=>{
     req.body.image = req.file.path;
     let data = await AdminSchema.create(req.body)
@@ -75,25 +66,19 @@ module.exports.changepassword = async(req,res) =>{
 }
 
 module.exports.changepass = async (req, res) => {
-    
     let user = req.user;
-
     if(req.body.oldpass == user.password){
-        
         if(req.body.newpass != user.password){
-
             if(req.body.newpass == req.body.confrompass){
                 await AdminSchema.findByIdAndUpdate(user.id,{
                     password: req.body.newpass,
                 });
                 res.redirect("/");
             }
-
         }
         else{
             console.log("new password and confrom password different");
         }
-
     }
     else{
         console.log("old password is err");
@@ -108,11 +93,8 @@ module.exports.forgotPass = async (req,res) => {
         return res.redirect("/")
     }
     let otp = Math.floor(Math.random() * 1000 + 9000);
-
     mailer.sendOtp(req.body.email,otp);
-
-   
-
+     
     req.session.otp = otp;
     req.session.adminData = admin;
 
@@ -129,7 +111,6 @@ module.exports.checkpass = async(req,res)=>{
                 password:req.body.newpass,
             });
             change && res.redirect("/");
-            
         }else{
             console.log("password to be same");
             res.redirect("/checkpass")
@@ -138,5 +119,4 @@ module.exports.checkpass = async(req,res)=>{
         console.log("otp is wrong");
         res.redirect("/checkpass");
     }
-
 };
