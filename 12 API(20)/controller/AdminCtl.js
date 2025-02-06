@@ -18,7 +18,6 @@ module.exports.AdminRegister=async(req,res)=>{
     req.body.password = await bcrypt.hash(req.body.password,10)
     await AdminSchema.create(req.body).then((data)=>{
         res.status(200).json({msg:"Admin Added",data:data})
-        // console.log(data);
     })
 }
 

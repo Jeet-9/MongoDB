@@ -1,0 +1,109 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background: #f8f9fa; 
+  min-height: 100vh;
+  font-family: 'Times New Roman', serif; 
+}
+
+form {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 40px;
+  padding: 25px;
+  background: #ffffff; /* Pure White */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  border: 2px solid #c2c7d0; /* Muted Blue Gray */
+  transition: transform 0.3s ease-in-out;
+}
+
+form:hover {
+  transform: translateY(-3px);
+}
+
+form h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #1d3557; /* Classic Navy Blue */
+  font-weight: bold;
+}
+
+form input {
+  width: 90%;
+  height: 45px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 2px solid #c2c7d0; /* Muted Blue Gray */
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  background-color: #f8f9fa; /* Soft White */
+  transition: border-color 0.3s ease-in-out;
+}
+
+form input:focus {
+  border-color: #457b9d; /* Muted Blue */
+}
+
+form button {
+  width: 96%;
+  height: 45px;
+  border: 1px solid #1d3557;
+  background: #1d3557; /* Deep Navy */
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+form button:hover {
+  background: #457b9d; /* Muted Blue */
+  transform: scale(1.03);
+}
+
+.data {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.data h1 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #1d3557;
+  font-weight: bold;
+}
+
+.d {
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border: 2px solid #c2c7d0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-in-out;
+}
+
+.d:hover {
+  transform: translateY(-3px);
+}
+
+.d h1 {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  color: #1d3557;
+}
+
+.d h1:first-child {
+  font-weight: bold;
+  color: #457b9d; /* Muted Blue */
+}
